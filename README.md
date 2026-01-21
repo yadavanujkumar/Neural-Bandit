@@ -180,21 +180,6 @@ Expected improvements after 1,000 interactions:
 - **Context Adaptation**: Better recommendations for different times/devices
 - **Exploration Benefits**: Discovery of high-value items missed by pure MF
 
-## 🤝 Contributing
-
-Contributions are welcome! Areas for improvement:
-- Advanced exploration strategies
-- Multi-armed bandit variants
-- Real-world dataset integration
-- Production deployment guides
-- Performance optimizations
-
 ## 📝 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgments
-
-- Implicit library for efficient ALS implementation
-- PyTorch team for the deep learning framework
-- Streamlit for the amazing dashboard framework
