@@ -47,11 +47,11 @@ class ALSCandidateGenerator:
         Train the ALS model on user-item interaction matrix.
         
         Args:
-            user_item_matrix: Sparse matrix of user-item interactions
+            user_item_matrix: Sparse matrix of user-item interactions (users x items)
         """
         self.user_item_matrix = user_item_matrix
-        # Implicit library expects item-user matrix
-        self.model.fit(user_item_matrix.T.tocsr())
+        # Implicit library expects user-item matrix in CSR format
+        self.model.fit(user_item_matrix.tocsr())
         self.is_fitted = True
         
     def generate_candidates(self, user_id: int) -> List[int]:
