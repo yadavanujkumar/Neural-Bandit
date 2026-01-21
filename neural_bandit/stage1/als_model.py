@@ -103,7 +103,9 @@ class ALSCandidateGenerator:
     
     def save_model(self, filepath: str):
         """Save the trained model to disk."""
-        os.makedirs(os.path.dirname(filepath), exist_ok=True)
+        dirpath = os.path.dirname(filepath)
+        if dirpath:  # Only create directory if path contains a directory component
+            os.makedirs(dirpath, exist_ok=True)
         with open(filepath, 'wb') as f:
             pickle.dump({
                 'model': self.model,

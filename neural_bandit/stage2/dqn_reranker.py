@@ -194,7 +194,9 @@ class DQNReranker:
     
     def save_model(self, filepath: str):
         """Save the trained model to disk."""
-        os.makedirs(os.path.dirname(filepath), exist_ok=True)
+        dirpath = os.path.dirname(filepath)
+        if dirpath:  # Only create directory if path contains a directory component
+            os.makedirs(dirpath, exist_ok=True)
         torch.save({
             'q_network_state_dict': self.q_network.state_dict(),
             'target_network_state_dict': self.target_network.state_dict(),
@@ -205,7 +207,7 @@ class DQNReranker:
     
     def load_model(self, filepath: str):
         """Load a trained model from disk."""
-        checkpoint = torch.load(filepath)
+        checkpoint = torch.load(filepath, weights_only=True)
         self.q_network.load_state_dict(checkpoint['q_network_state_dict'])
         self.target_network.load_state_dict(checkpoint['target_network_state_dict'])
         self.item_embeddings.load_state_dict(checkpoint['item_embeddings_state_dict'])
